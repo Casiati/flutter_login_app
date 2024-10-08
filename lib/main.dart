@@ -1,10 +1,15 @@
+import 'package:default_login_screen/models/auth_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import 'pages/home/home_page.dart';
 import 'pages/login/login_page.dart';
 
+
+
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => AuthModel(), child: const MyApp()
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/login': (context) => const LoginPage(),
+        '/login': (context) => LoginPage(),
         '/home': (context) => const HomePage(),
       },
     );
